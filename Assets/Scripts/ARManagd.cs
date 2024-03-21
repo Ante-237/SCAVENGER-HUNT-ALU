@@ -10,13 +10,22 @@ public class ARManagd : MonoBehaviour
     public float RotationSpeed = 15f;
     public Button Rightbutton;
     public Button LeftButton;
+    public Button InfoButton;
+    public Button AudioButton;
 
     private GameObject WorldObject;
+    private GameObject CanvasInfo;
+    private GameObject CameraObj;
+    private AudioSource Audio;
 
     private void Start()
     {
         Rightbutton.onClick.AddListener(RotateRight);
         LeftButton.onClick.AddListener(RotateLeft);
+        InfoButton.onClick.AddListener(ShowInfo);
+        AudioButton.onClick.AddListener(PlayAudio);
+        
+        CameraObj = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     void Update()
@@ -26,7 +35,15 @@ public class ARManagd : MonoBehaviour
             if (WorldObject == null)
             {
                 WorldObject = GameObject.FindGameObjectWithTag("ModelObject");
+                Audio = WorldObject.transform.GetChild(1).GetComponent<AudioSource>();
+                CanvasInfo = GameObject.FindGameObjectWithTag("ModelUI");
+                CanvasInfo.gameObject.SetActive(false);
             }
+        }
+
+        if (CanvasInfo != null)
+        {
+            CanvasInfo.transform.LookAt(CameraObj.transform, Vector3.down);
         }
     }
 
@@ -35,6 +52,7 @@ public class ARManagd : MonoBehaviour
         if (WorldObject != null)
         {
             WorldObject.transform.Rotate(0, RotationSpeed * Time.deltaTime, 0);
+            
         }
     }
 
@@ -47,7 +65,26 @@ public class ARManagd : MonoBehaviour
         
     }
 
-    
-    
-    
+    public void ShowInfo()
+    {
+        if (CanvasInfo != null)
+        {
+            if (CanvasInfo.gameObject.activeInHierarchy)
+            {
+                CanvasInfo.gameObject.SetActive(false);
+            }
+            else
+            {
+                CanvasInfo.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void PlayAudio()
+    {
+        if (Audio != null)
+        {
+            Audio.Play();
+        }
+    }
 }
