@@ -160,7 +160,11 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.unity.template.ar_mobile
     Standalone: com.unity.template.ar-mobile
+<<<<<<< Updated upstream
     iPhone: com.AFI.SCAVENGERHUNTALU
+=======
+    iPhone: com.ALUWORK.THEHUNT
+>>>>>>> Stashed changes
   buildNumber:
     Bratwurst: 0
     Standalone: 0
@@ -796,7 +800,11 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
+<<<<<<< Updated upstream
     iPhone: UNITY_XR_ARKIT_LOADER_ENABLED
+=======
+    iPhone: UNITY_XR_ARKIT_LOADER_ENABLED;UNITY_XR_ARKIT_FACE_TRACKING_ENABLED
+>>>>>>> Stashed changes
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
