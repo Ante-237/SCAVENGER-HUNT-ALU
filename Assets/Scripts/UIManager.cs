@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
@@ -90,6 +92,8 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
+    private string CurrentAnswer = "";
+
 
     private void Start()
     {
@@ -123,6 +127,8 @@ public class UIManager : MonoBehaviour
         ScanAround_Button.onClick.AddListener(ScanSelected);
         GiveUpScanPanel_Button.onClick.AddListener(GiveUpScanSelected);
         MainMenu_Button.onClick.AddListener(MainMenuSelected);
+        AnswerOne_Button.onClick.AddListener(AnswerASelected);
+        AnswerTwo_Button.onClick.AddListener(AnswerBSelected);
         
         // this is setup only for testing
         AnswerOne_Button.onClick.AddListener(CongratPageSelected);
@@ -134,13 +140,81 @@ public class UIManager : MonoBehaviour
         Completion_Panel.SetActive(true);
         Scan_Panel.SetActive(false);
     }
+
+    public void AddListerAnswerOne(UnityAction method)
+    {
+        AnswerOne_Button.onClick.AddListener(method);
+    }
     // ends here 
+    
+    /// <summary>
+    /// Shall update the prompt text 
+    /// </summary>
+    /// <param name="prompt"></param>
+    public void UpdatePrompt(String prompt)
+    {
+        PromptText_Prompt.text = prompt;
+    }
+    
+    /// <summary>
+    /// shall update the questions
+    /// </summary>
+    /// <param name="question"></param>
+    public void UpdateQuestion(string question)
+    {
+        Question_Text.text = question;
+    }
+
+    
+    /// <summary>
+    /// Updates the answers being displayed
+    /// </summary>
+    /// <param name="answerOne"></param>
+    /// <param name="answerTwo"></param>
+    public void UpdateAnswers(string answerOne, string answerTwo)
+    {
+        AnswerOne_Text.text = answerOne;
+        AnswerTwo_Text.text = answerTwo;
+    }
+
+    public void AddListerHuntType(UnityAction method)
+    {
+        HuntOptionOne_Button.onClick.AddListener(method);
+    }
+
+    
+    /// <summary>
+    /// allows manager to add other method calls to Scan Button
+    /// </summary>
+    /// <param name="method"></param>
+    public void AddListerScanButton(UnityAction method)
+    {
+        ScanAround_Button.onClick.AddListener(method);
+    }
+    
+
+    public String GetCurrentAnswer()
+    {
+        return CurrentAnswer ?? "";
+    }
+    
+    private void AnswerASelected()
+    {
+        CurrentAnswer = AnswerOne_Text.text;
+    }
+
+    private void AnswerBSelected()
+    {
+        CurrentAnswer = AnswerTwo_Text.text;
+    }
+    
 
     private void MainMenuSelected()
     {
         Prompt_Panel.SetActive(false);
         Scan_Panel.SetActive(false);
         Completion_Panel.SetActive(false);
+        EntryMain_Panel.SetActive(true);
         Main_Panel.SetActive(true);
     }
 
@@ -148,6 +222,7 @@ public class UIManager : MonoBehaviour
     {
         Scan_Panel.SetActive(true);
         Prompt_Panel.SetActive(false);
+        EntryMain_Panel.SetActive(false);
     }
 
     private void GiveUpPromptSelected()
@@ -158,7 +233,9 @@ public class UIManager : MonoBehaviour
     private void GiveUpScanSelected()
     {
         Scan_Panel.SetActive(false);
+        EntryMain_Panel.SetActive(true);
         Main_Panel.SetActive(true);
+        
     }
     private void FirstHuntOption()
     {

@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Data
+  m_EditorClassIdentifier: Assembly-CSharp::QUESTIONS_SO
+  questions:
+  - prompt: ' In lands where pyramids touch the sky, Your first clue waits, so don''t
+      be shy.'
+    location: Egypt
+    funFact: The Great Pyramid of Giza, one of the Seven Wonders of the Ancient World,
+      was the tallest man-made structure in the world for over 3,800 years.
+    question: The Great Pyramid of Giza, one of the Seven Wonders of the Ancient
+      World, was built as a tomb for which ancient Egyptian pharaoh?
+    answerA: Cleopatra
+    answerB: Khufu
+    correctAnswer: Khufu
+  - prompt: In lands where callendars dance in tune, Your journey continues beneath
+      the moon
+    location: Ethiopia
+    funFact: Ethiopia follows its own unique calendar, which is about 7-8 years behind
+      the Gregorian calendar used by most of the world
+    question: What is the name of the unique calendar used in Ethiopia?
+    answerA: Gregorian Calendar
+    answerB: Ethiopian Calendar
+    correctAnswer: Ethiopian Calendar
+  - prompt: In lands where kings rule with regal grace, Find your next clue in this
+      royal place.
+    location: Eswatini
+    funFact: Eswatini is one of the few remaining monarchies in Africa, ruled by
+      King Mswati III, who is known for his colorful attire and multiple wives.
+    question: Who is the current ruler of Eswatini?
+    answerA: King Mswati II
+    answerB: King Mswati III
+    correctAnswer: King Mswati III
+  - prompt: In sands where ancient ruins lay in wait, Where Timgad's whispers call
+      from afar, Your next clue shines like a guiding star.
+    location: Algeria
+    funFact: Algeria is home to the ancient city of Timgad, also known as "African
+      Pompeii," which was buried under sand for centuries until its rediscovery in
+      the 19th century.
+    question: What is the nickname given to the ancient city of Timgad?
+    answerA: African Pompeii
+    answerB: City of Sands
+    correctAnswer: African Pompeii
+  - prompt: Where fish dance in waters clear and vast, Seek out the door where life's
+      abundance lasts. In the warm heart where smiles never fade, Your next clue
+      lies in this hospitable shade.
+    location: Malawi
+    funFact: Lake Malawi, also known as Lake Nyasa, is one of the largest freshwater
+      lakes in the world and is home to more species of fish than any other lake.Malawi
+      is known as the "Warm Heart of Africa" due to the friendliness and hospitality
+      of its people.
+    question: Malawi is home to the world's first freshwater national park. What
+      is the name of this national park?
+    answerA: Nyika National Park
+    answerB: Lake Malawi National Park
+    correctAnswer: Lake Malawi National Park
+  - prompt: In lands where giants once roamed free, Seek out the door where sweetness
+      be. Where cocoa beans in forests hide
+    location: Angola
+    funFact: Angola is not only known for its giant sable antelope but also for its
+      delicious and unique cuisine. One popular sweet treat in Angola is "Doce de
+      Ginguba," a peanut candy made from ground peanuts, sugar, and sometimes coconut.
+      It's a delightful snack enjoyed by many Angolans and visitors alike
+    question: What animal, once thought to be extinct, was rediscovered in a land
+      of giants in the year 2005?
+    answerA: Elephant
+    answerB: Giant Sable Antelope
+    correctAnswer: Giant Sable Antelope
+  - prompt: In lands where flags tell tales of old,Seek out the door where stories
+      unfold.Where rifles stand for freedom's fight
+    location: Mozambique
+    funFact: Mozambique is the only country in the world with a firearm on its national
+      flag, symbolizing the country's struggle for independence.
+    question: What symbol on the Mozambique national flag represents the country's
+      struggle for independence?
+    answerA: A Star
+    answerB: A Rifle
+    correctAnswer: A Rifle
+  - prompt: In jungles vast where life is wild and free,Seek out the door where nature's
+      majesty be
+    location: Congo
+    funFact: The Congo rainforest, often referred to as the "lungs of Africa," is
+      the second-largest tropical rainforest in the world after the Amazon. It plays
+      a crucial role in regulating the Earth's climate and is home to an incredibly
+      diverse array of plant and animal species, including many endangered species
+      such as the mountain gorilla and the bonobo.
+    question: Which of the following endangered primate species is native to the
+      Congo rainforest?
+    answerA: Chimpanzee
+    answerB: Mountain Gorilla
+    correctAnswer: Mountain Gorilla

@@ -2380,6 +2380,8 @@ MonoBehaviour:
   ARCM: {fileID: 138336791}
   XRO: {fileID: 1125729853}
   MainCamera: {fileID: 138336789}
+  UM: {fileID: 533460626}
+  allData: {fileID: 11400000, guid: 5bb3dd47453d92146bd460d8c31927e0, type: 2}
 --- !u!114 &533460628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2392,6 +2394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b14815b0cda53f44818178388a03d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllData: {fileID: 11400000, guid: 5bb3dd47453d92146bd460d8c31927e0, type: 2}
 --- !u!1 &541783832
 GameObject:
   m_ObjectHideFlags: 0
@@ -4969,7 +4972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1240188201
 RectTransform:
   m_ObjectHideFlags: 0
