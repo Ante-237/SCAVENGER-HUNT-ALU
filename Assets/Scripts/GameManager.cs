@@ -9,16 +9,16 @@ using UnityEngine.XR.ARFoundation;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Disorganized Naming")]
     public JsonDeserialization DataStorage;
     public ARCameraManager ARCM;
     public XROrigin XRO;
     public Camera MainCamera;
     public UIManager UM;
     public QUESTIONS_SO allData;
-  
+    
     
     public const int POINTS = 300;
-    
     private static int CurrentPoints = 0;
     private float CurrentTime = 0;
     private int CurrentQuestionIndex = 0;
@@ -35,11 +35,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         NullCheck();
-        
-        
         DisableCameraState();
-        
-        
+ 
         UM.AddListerHuntType(FirstCall);
         UM.AddListerScanButton(UpdateCameraState);
         UM.AddListerScanButton(UpdateDataQuestions);

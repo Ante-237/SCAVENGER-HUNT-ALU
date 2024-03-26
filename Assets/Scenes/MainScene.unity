@@ -519,10 +519,10 @@ GameObject:
   - component: {fileID: 138336794}
   - component: {fileID: 138336789}
   - component: {fileID: 138336793}
-  - component: {fileID: 138336792}
   - component: {fileID: 138336791}
   - component: {fileID: 138336790}
   - component: {fileID: 138336795}
+  - component: {fileID: 138336796}
   m_Layer: 0
   m_Name: AR Camera
   m_TagString: MainCamera
@@ -613,18 +613,6 @@ MonoBehaviour:
   m_LightEstimation: 0
   m_FacingDirection: 1
   m_RenderMode: 0
---- !u!114 &138336792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 138336788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3c44306fb1e439a9f18b2212b8ab70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &138336793
 AudioListener:
   m_ObjectHideFlags: 0
@@ -692,6 +680,75 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &138336796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138336788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2fadf230d1919748a9aa21d40f74619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackingType: 0
+  m_UpdateType: 0
+  m_IgnoreTrackingState: 0
+  m_PositionInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Position
+      m_Type: 0
+      m_ExpectedControlType: Vector3
+      m_Id: 3bbb12e4-9c56-4e04-a184-2709803c2172
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_RotationInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Rotation
+      m_Type: 0
+      m_ExpectedControlType: Quaternion
+      m_Id: 57a37b2f-c2e9-469c-ad2a-4c191e6d6719
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_TrackingStateInput:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Tracking State
+      m_Type: 0
+      m_ExpectedControlType: Integer
+      m_Id: c123eb9f-d9ad-4d25-a1cb-61bcb891920a
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_PositionAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5ee04e4f-d773-49e0-9599-2a9f1397cf72
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_RotationAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 39b9950f-3f79-48da-9574-961db01a2712
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &171162899
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,6 +2353,7 @@ GameObject:
   - component: {fileID: 533460628}
   - component: {fileID: 533460627}
   - component: {fileID: 533460626}
+  - component: {fileID: 533460629}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2395,6 +2453,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllData: {fileID: 11400000, guid: 5bb3dd47453d92146bd460d8c31927e0, type: 2}
+--- !u!114 &533460629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533460623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfa726694f6fdd43aaefe72f5eefb33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrackedNames:
+  - angola
+  - congo
+  TrackedImageManager: {fileID: 1125729854}
+  UIM: {fileID: 533460626}
+  startedTracking: 0
 --- !u!1 &541783832
 GameObject:
   m_ObjectHideFlags: 0
@@ -4521,6 +4597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1125729852}
   - component: {fileID: 1125729853}
+  - component: {fileID: 1125729854}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -4539,7 +4616,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 138336794}
   m_Father: {fileID: 0}
@@ -4561,6 +4638,23 @@ MonoBehaviour:
   m_CameraFloorOffsetObject: {fileID: 0}
   m_RequestedTrackingOriginMode: 0
   m_CameraYOffset: 1.1176
+--- !u!114 &1125729854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125729850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedLibrary: {fileID: 11400000, guid: ae475f59808b3994aaf2dba79d1b6115,
+    type: 2}
+  m_MaxNumberOfMovingImages: 0
+  m_TrackedImagePrefab: {fileID: 4883485929105265973, guid: d6ab5525f3ca3c147adda0e4a79c5139,
+    type: 3}
 --- !u!1 &1160046555
 GameObject:
   m_ObjectHideFlags: 0
