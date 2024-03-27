@@ -9,7 +9,6 @@ using UnityEngine;
 public class JsonDeserialization : MonoBehaviour
 {
     private readonly string filename = "data.json";
-    public QUESTIONS_SO AllData;
     
     public Questions JsonObjects()
     {

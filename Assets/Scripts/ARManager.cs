@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.XR.ARFoundation;
@@ -12,6 +13,7 @@ public class ARManager : MonoBehaviour
 
     [SerializeField] private ARTrackedImageManager TrackedImageManager;
     [SerializeField] private UIManager UIM;
+    [SerializeField] private TextMeshProUGUI DebugText;
     public bool startedTracking = false;
 
 
@@ -26,7 +28,7 @@ public class ARManager : MonoBehaviour
     private void Start()
     {
         NullCheck();
-
+        DebugText.text = "Started";
 
         UIM.AddListerScanButton(UpdateTrackingCheck);
         UIM.AddListerAnswerOne(StopTracking);
@@ -54,16 +56,17 @@ void NullCheck()
         
         foreach (ARTrackedImage tracked in TrackedImageManager.trackables)
         {
-            Debug.Log("Tracked Image is :" + tracked.name);
+            
+            DebugText.text += "Tracked Image is :" + tracked.name + "\n";
             
             if (tracked.name == TrackedNames[0])
             {
-              Debug.Log("First Tracking Image Detected");
+              DebugText.text += "First Tracking Image Detected \n";
             }
 
             if (tracked.name == TrackedNames[1])
             {
-               Debug.Log("Second Tracking image Detected");
+               DebugText.text += "Second Tracking image Detected \n";
             }
         }
     }
