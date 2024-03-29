@@ -30,7 +30,7 @@ public class JsonDeserialization : MonoBehaviour
     private void Start()
     {
         /*
-        QUESTIONS_SO SO_Object = AssetDatabase.LoadAssetAtPath<QUESTIONS_SO>("Assets/Data.asset");
+        QUESTIONS_SO SO_Object = AssetDatabase.LoadAssetAtPath<QUESTIONS_SO>("Assets/Scripts/QUESTIONS_SO.asset");
 
         Questions TemporalQuestion = JsonObjects();
         foreach (Question q in TemporalQuestion.questions)

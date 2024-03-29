@@ -16,12 +16,16 @@ public class GameManager : MonoBehaviour
     public Camera MainCamera;
     public UIManager UM;
     public QUESTIONS_SO allData;
+    [Range(0, 10)] public float CheckAnswerTime = 1.0f;
     
     
     public const int POINTS = 300;
-    private static int CurrentPoints = 0;
+    private  int CurrentPoints = 0;
     private float CurrentTime = 0;
     private int CurrentQuestionIndex = 0;
+
+    private bool FirstScan = false;
+    private int NumberOfQuestions = 0;
 
     void NullCheck()
     {
@@ -36,12 +40,36 @@ public class GameManager : MonoBehaviour
     {
         NullCheck();
         DisableCameraState();
- 
+        CountQuestions();
         UM.AddListerHuntType(FirstCall);
         UM.AddListerScanButton(UpdateCameraState);
         UM.AddListerScanButton(UpdateDataQuestions);
+        UM.AddListerScanButton(TrackFirstScan);
         UM.AddListerAnswerOne(DisableCameraState);
+        UM.AddListerAnswerOne(UpdateAnswerSelection);
+        UM.AddListerAnswerTwo(UpdateAnswerSelection);
+        UM.AddListerResetButton(ResetStates);
+    }
 
+    private void ResetStates()
+    {
+        CurrentQuestionIndex = 0;
+        CurrentPoints = 0;
+        CurrentTime = 0;
+    }
+
+    private void CountQuestions()
+    {
+        NumberOfQuestions = allData.questions.Count;
+    }
+
+    private void Update()
+    {
+        if (FirstScan)
+        {
+            CurrentTime += Time.deltaTime;
+            UM.UpdateTimerText(CurrentTime);
+        }
     }
 
     private void DisableCameraState()
@@ -56,18 +84,74 @@ public class GameManager : MonoBehaviour
         UM.UpdatePrompt(allData.questions[CurrentQuestionIndex].prompt);
     }
 
-    private void UpdateDataQuestions()
+    private void TrackFirstScan()
     {
-        UM.UpdateQuestion(allData.questions[CurrentQuestionIndex].question);
-        UM.UpdateAnswers(allData.questions[CurrentQuestionIndex].answerA, allData.questions[CurrentQuestionIndex].answerB);
+        FirstScan = true;
     }
 
+    private void UpdateDataQuestions()
+    {
+        if (CurrentQuestionIndex < NumberOfQuestions)
+        {
+            UM.UpdateQuestion(allData.questions[CurrentQuestionIndex].question);
+            UM.UpdateAnswers(allData.questions[CurrentQuestionIndex].answerA, allData.questions[CurrentQuestionIndex].answerB);
+            CurrentQuestionIndex++;
+        }
+      
+    }
+    
     private void UpdateCameraState(){
         ARCM.enabled = true;
         XRO.Camera = MainCamera;
         MainCamera.enabled = true;
     }
+
+    public void UpdateAnswerSelection()
+    {
+        // call the methods to get the current answer and compare with the right answer.
+        // call coroutine to update the panels if there are still questions running. 
+        // update the score depending on the answer choice.
+        // pass in the lag time for calling the coroutine.
+        string presentAnswer =  UM.GetCurrentAnswer();
+        if (presentAnswer == allData.questions[CurrentQuestionIndex].correctAnswer)
+        {
+            CurrentPoints += 100;
+        }
+
+       if (CurrentQuestionIndex < NumberOfQuestions)
+       {
+         
+           StartCoroutine(checkAnswerMove(CheckAnswerTime));
+       }
+       else
+       {
+           // call coroutine to show final panel with final score and time. 
+           StartCoroutine(FinalScoreUpdate(CheckAnswerTime));
+       }
+    }
+
+    IEnumerator checkAnswerMove(float lagTime)
+    {
+        // update score
+        // restart all panels again from prompt
+        // update the current prompts questions
+        // increment the index  checking the various questions
+        yield return new WaitForSeconds(lagTime);
+        UM.UpdatePrompt(allData.questions[CurrentQuestionIndex].prompt);
+        UM.UpdatePoints(CurrentPoints);
+        UM.UpdatePromptPoint(CurrentPoints);
+        UM.UpdateOldText(CurrentPoints);
+        UM.RestartScanningPanel();
+        
+    }
     
-    
+    IEnumerator FinalScoreUpdate(float lagTime)
+    {
+        // update time and score
+        yield return new WaitForSeconds(lagTime);
+        UM.CongratPageSelected();
+        UM.UpdateFinalScoreText(CurrentPoints);
+        UM.UpdateFinalTimeText(CurrentTime);
+    }
     
 }

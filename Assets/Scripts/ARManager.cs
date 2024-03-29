@@ -13,7 +13,7 @@ public class ARManager : MonoBehaviour
 
     [SerializeField] private ARTrackedImageManager TrackedImageManager;
     [SerializeField] private UIManager UIM;
-    [SerializeField] private TextMeshProUGUI DebugText;
+   // [SerializeField] private TextMeshProUGUI DebugText;
     public bool startedTracking = false;
 
 
@@ -28,7 +28,7 @@ public class ARManager : MonoBehaviour
     private void Start()
     {
         NullCheck();
-        DebugText.text = "Started";
+       // DebugText.text = "Started";
 
         UIM.AddListerScanButton(UpdateTrackingCheck);
         UIM.AddListerAnswerOne(StopTracking);
@@ -53,20 +53,22 @@ void NullCheck()
 
     private void UpdateCurrentPrefab()
     {
+       // DebugText.text = "Updating Prefab Running";
+      //  DebugText.text += TrackedImageManager.trackedImagePrefab.name;
         
         foreach (ARTrackedImage tracked in TrackedImageManager.trackables)
         {
             
-            DebugText.text += "Tracked Image is :" + tracked.name + "\n";
+         //   DebugText.text += "Tracked Image is :" + tracked.name + "\n";
             
             if (tracked.name == TrackedNames[0])
             {
-              DebugText.text += "First Tracking Image Detected \n";
+         //     DebugText.text += "First Tracking Image Detected \n";
             }
 
             if (tracked.name == TrackedNames[1])
             {
-               DebugText.text += "Second Tracking image Detected \n";
+         //      DebugText.text += "Second Tracking image Detected \n";
             }
         }
     }

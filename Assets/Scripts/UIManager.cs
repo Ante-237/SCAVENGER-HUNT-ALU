@@ -79,6 +79,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI Question_Text;
     [SerializeField] private TextMeshProUGUI AnswerOne_Text;
     [SerializeField] private TextMeshProUGUI AnswerTwo_Text;
+    [SerializeField] private TextMeshProUGUI OldPrompt_Text;
 
     [Header("PROMPT PANEL TEXT ")] 
     [SerializeField] private TextMeshProUGUI PointsText_Prompt;
@@ -88,6 +89,8 @@ public class UIManager : MonoBehaviour
     [Header("COMPLETION PANEL TEXT")] 
     [SerializeField] private TextMeshProUGUI Points_Text;
     [SerializeField] private TextMeshProUGUI CompletionTime_Text;
+    
+    
     
 
     #endregion
@@ -131,11 +134,56 @@ public class UIManager : MonoBehaviour
         AnswerTwo_Button.onClick.AddListener(AnswerBSelected);
         
         // this is setup only for testing
-        AnswerOne_Button.onClick.AddListener(CongratPageSelected);
+     //   AnswerOne_Button.onClick.AddListener(CongratPageSelected);
+    }
+    
+    // updating time 
+    // updating points
+    public void UpdateTimerText(float time)
+    {
+        TimeText_ScanPanel.text = time.ToString("00:00");
+    }
+
+    public void UpdateOldText(float score)
+    {
+        OldPrompt_Text.text = score.ToString();
+    }
+
+    public void UpdatePromptPoint(int score)
+    {
+        PointsText_Prompt.text = score.ToString();
+    }
+
+    public void UpdateFinalTimeText(float time)
+    {
+        CompletionTime_Text.text =   "COMPLETION \nTIME \n" +  "<color=green>" + time.ToString("00:00") + "</color>";
+    }
+
+    public void UpdateFinalScoreText(int score)
+    {
+        Points_Text.text = "TOTAL POINTS \n" + "<color=green>" + score.ToString() + "</color>";
+    }
+
+    public void UpdatePoints(int score)
+    {
+        Points_Text.text = score.ToString();
+    }
+    
+    public String GetCurrentAnswer()
+    {
+        return CurrentAnswer ?? "";
+    }
+    
+    // enables previous menus
+    public void RestartScanningPanel()
+    {
+        Prompt_Panel.SetActive(true);
+        Scan_Panel.SetActive(false);
+        Completion_Panel.SetActive(false);
     }
     
     // setting this up for testing purpose only
-    private void CongratPageSelected()
+    public void  CongratPageSelected()
     {
         Completion_Panel.SetActive(true);
         Scan_Panel.SetActive(false);
@@ -145,8 +193,13 @@ public class UIManager : MonoBehaviour
     {
         AnswerOne_Button.onClick.AddListener(method);
     }
-    // ends here 
+
+    public void AddListerAnswerTwo(UnityAction method)
+    {
+        AnswerTwo_Button.onClick.AddListener(method);
+    }
     
+    /// ends here 
     /// <summary>
     /// Shall update the prompt text 
     /// </summary>
@@ -191,13 +244,15 @@ public class UIManager : MonoBehaviour
     {
         ScanAround_Button.onClick.AddListener(method);
     }
-    
 
-    public String GetCurrentAnswer()
+
+    public void AddListerResetButton(UnityAction method)
     {
-        return CurrentAnswer ?? "";
+        MainMenu_Button.onClick.AddListener(method);
+        GiveUpPromp_Button.onClick.AddListener(method);
+        GiveUpScanPanel_Button.onClick.AddListener(method);
     }
-    
+ 
     private void AnswerASelected()
     {
         CurrentAnswer = AnswerOne_Text.text;
@@ -217,6 +272,8 @@ public class UIManager : MonoBehaviour
         EntryMain_Panel.SetActive(true);
         Main_Panel.SetActive(true);
     }
+    
+    
 
     private void ScanSelected()
     {
@@ -326,9 +383,5 @@ public class UIManager : MonoBehaviour
         Assert.IsNotNull(Points_Text);
         Assert.IsNotNull(CompletionTime_Text);
         Assert.IsNotNull(TimeText_ScanPanel);
-        
     }
-    
-    
-    
 }
