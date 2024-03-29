@@ -133,8 +133,10 @@ public class UIManager : MonoBehaviour
         AnswerOne_Button.onClick.AddListener(AnswerASelected);
         AnswerTwo_Button.onClick.AddListener(AnswerBSelected);
         
-        // this is setup only for testing
-     //   AnswerOne_Button.onClick.AddListener(CongratPageSelected);
+        GiveUpPromp_Button.onClick.AddListener(GiveUpScanningPanel);
+        MainMenu_Button.onClick.AddListener(GiveUpScanningPanel);
+        GiveUpScanPanel_Button.onClick.AddListener(GiveUpScanningPanel);
+ 
     }
     
     // updating time 
@@ -146,12 +148,12 @@ public class UIManager : MonoBehaviour
 
     public void UpdateOldText(float score)
     {
-        OldPrompt_Text.text = score.ToString();
+        OldPrompt_Text.text = "POINTS: " + score.ToString();
     }
 
     public void UpdatePromptPoint(int score)
     {
-        PointsText_Prompt.text = score.ToString();
+        PointsText_Prompt.text = "POINTS: " + score.ToString();
     }
 
     public void UpdateFinalTimeText(float time)
@@ -178,6 +180,14 @@ public class UIManager : MonoBehaviour
     public void RestartScanningPanel()
     {
         Prompt_Panel.SetActive(true);
+        Scan_Panel.SetActive(false);
+        Completion_Panel.SetActive(false);
+    }
+
+    public void GiveUpScanningPanel()
+    {
+        EntryMain_Panel.SetActive(true);
+        Prompt_Panel.SetActive(false);
         Scan_Panel.SetActive(false);
         Completion_Panel.SetActive(false);
     }
@@ -263,7 +273,6 @@ public class UIManager : MonoBehaviour
         CurrentAnswer = AnswerTwo_Text.text;
     }
     
-
     private void MainMenuSelected()
     {
         Prompt_Panel.SetActive(false);
@@ -272,8 +281,6 @@ public class UIManager : MonoBehaviour
         EntryMain_Panel.SetActive(true);
         Main_Panel.SetActive(true);
     }
-    
-    
 
     private void ScanSelected()
     {

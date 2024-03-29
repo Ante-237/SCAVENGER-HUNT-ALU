@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     
     
     public const int POINTS = 300;
-    private  int CurrentPoints = 0;
+    private static  int CurrentPoints = 0;
     private float CurrentTime = 0;
     private int CurrentQuestionIndex = 0;
 
@@ -53,9 +53,17 @@ public class GameManager : MonoBehaviour
 
     private void ResetStates()
     {
+        
+        // set default values to zero
+        // update the UI panels to reflect the values
+        
         CurrentQuestionIndex = 0;
         CurrentPoints = 0;
         CurrentTime = 0;
+        
+        UM.UpdatePoints(CurrentPoints);
+        UM.UpdatePromptPoint(CurrentPoints);
+        UM.UpdateOldText(CurrentPoints);
     }
 
     private void CountQuestions()
@@ -113,9 +121,12 @@ public class GameManager : MonoBehaviour
         // update the score depending on the answer choice.
         // pass in the lag time for calling the coroutine.
         string presentAnswer =  UM.GetCurrentAnswer();
-        if (presentAnswer == allData.questions[CurrentQuestionIndex].correctAnswer)
+     //   Debug.Log("Current Answer :"  + presentAnswer  + "Correct Answer :" + allData.questions[CurrentQuestionIndex - 1].correctAnswer);
+        
+        if (presentAnswer == allData.questions[CurrentQuestionIndex - 1].correctAnswer)
         {
             CurrentPoints += 100;
+          //  Debug.Log("Current Points : " + CurrentPoints);
         }
 
        if (CurrentQuestionIndex < NumberOfQuestions)
