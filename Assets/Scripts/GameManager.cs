@@ -121,12 +121,12 @@ public class GameManager : MonoBehaviour
         // update the score depending on the answer choice.
         // pass in the lag time for calling the coroutine.
         string presentAnswer =  UM.GetCurrentAnswer();
-     //   Debug.Log("Current Answer :"  + presentAnswer  + "Correct Answer :" + allData.questions[CurrentQuestionIndex - 1].correctAnswer);
+        // Debug.Log("Current Answer :"  + presentAnswer  + "Correct Answer :" + allData.questions[CurrentQuestionIndex - 1].correctAnswer);
         
         if (presentAnswer == allData.questions[CurrentQuestionIndex - 1].correctAnswer)
         {
             CurrentPoints += 100;
-          //  Debug.Log("Current Points : " + CurrentPoints);
+            // Debug.Log("Current Points : " + CurrentPoints);
         }
 
        if (CurrentQuestionIndex < NumberOfQuestions)

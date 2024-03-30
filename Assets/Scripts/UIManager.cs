@@ -132,7 +132,6 @@ public class UIManager : MonoBehaviour
         MainMenu_Button.onClick.AddListener(MainMenuSelected);
         AnswerOne_Button.onClick.AddListener(AnswerASelected);
         AnswerTwo_Button.onClick.AddListener(AnswerBSelected);
-        
         GiveUpPromp_Button.onClick.AddListener(GiveUpScanningPanel);
         MainMenu_Button.onClick.AddListener(GiveUpScanningPanel);
         GiveUpScanPanel_Button.onClick.AddListener(GiveUpScanningPanel);
